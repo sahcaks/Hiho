@@ -1,0 +1,73 @@
+<?php session_start(); ?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hinkali House</title>
+    <?php
+    include "shared_styles.php";
+    ?>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/swiper-bundle.min.css">
+</head>
+
+<body>
+    <?php
+    include 'header.php'
+        ?>
+    <?php include 'modal_forms.php'; ?>
+    <div class="location">
+        <h2>Где мы находимся?</h2>
+        <div class="map">
+            <img src="img/map.svg">
+            <div class="adress">
+                <div class="ad1">
+                    <h2><img src="img/icons/geo.svg"> г. Минск, ул. Белорусская, 21</h2>
+                </div>
+                <div class="ad2">
+                    <h2><img src="img/icons/phone.svg"> +375259592122</h2>
+                </div>
+                <div class="ad3">
+                    <h2><img src="img/icons/gmail.svg"> hinkali.house@gmail.com</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="previev">
+            <h3>Мы рядом с вами!</h3>
+            <h3>г. Минск, ул. Белорусская, 21</h3>
+        </div>
+        <div class="previev">
+            <h3>Забронируйте столик</h3>
+            <h3>+375259592122</h3>
+            <h3>Время работы с 9:00 до 21:00</h3>
+        </div>
+        <div class="previev2">
+            <h3>Мы в социальных сетях</h3>
+            <div class="socials"><img src="img\icons\inst.svg"> <img src="img\icons\facebook.svg"><img
+                    src="img\icons\tg.svg"></div>
+        </div>
+        <div class="confid">
+            <div class="nav">
+                <h3>Меню</h3>
+                <h3>О нас</h3>
+                <h3>Отзывы</h3>
+            </div>
+            <img class="logo_foot" src="img\icons\logo.svg">
+            <h3>2023 © Hilkali House | khinkalihouse.by️</h3>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/modal.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/swiper-bundle.min.js"></script>
+</body>
+
+</html>

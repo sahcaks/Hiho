@@ -1,0 +1,226 @@
+.form {
+  border: 1px solid #28241f;
+  position: absolute;
+  z-index: 10;
+  background-color: rgb(255, 255, 255);
+  width: 420px;
+  padding: 0 45px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.form .close {
+  position: absolute;
+  top: 3%;
+  right: 3%;
+}
+.form p {
+  color: black;
+  font-weight: 600;
+  font-size: 32px;
+  text-align: center;
+  margin-top: 54px;
+}
+.form__inbox {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+}
+.form__inbox label {
+  font-family: Montserrat;
+  color: black;
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+.form__inbox input {
+  border: none;
+  border-bottom: 1px solid black;
+  padding: 15px 30px;
+  font-size: 20px;
+  font-family: Montserrat;
+  font-weight: 200;
+  width: 358px;
+  height: 25px;
+}
+.form__inbox input:focus {
+  outline: 1px solid #28241f;
+}
+.form__btnbox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.form__btnbox .btn_login {
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid rgba(0, 0, 0, 0);
+  font-family: Montserrat;
+  font-weight: 200;
+  font-size: 14px;
+  margin-top: 10px;
+}
+.form__btn {
+  border: none;
+  background-color: #80350b;
+  color: white;
+  padding: 15px 30px;
+  font-family: Montserrat;
+  font-weight: 200;
+  font-size: 20px;
+}
+.form_registration {
+  display: none;
+  width: 900px;
+  height: 650px;
+}
+.form_registration .hide {
+  position: absolute;
+  width: 24px;
+  top: 32.3%;
+  left: 91%;
+}
+.form_registration .hide2 {
+  top: 56.4%;
+}
+.form_registration .form__inbox_check {
+  flex-direction: row;
+  align-items: center;
+  margin-top: 10px;
+}
+.form_registration .form__inbox_check label {
+  font-weight: 200;
+  font-size: 15px;
+  margin: 1px 0 2px 5px;
+}
+.form_registration .form__inbox_check label:focus {
+  outline: 2px solid rgba(0, 0, 0, 0) !important;
+}
+.form_entry {
+  display: none;
+  height: 500px;
+}
+.form_entry .form__socials {
+  display: flex;
+  justify-content: center;
+  column-gap: 50px;
+  margin-bottom: 50px;
+}
+.form_entry .form__socials img:hover {
+  outline: 2px solid black;
+}
+.form_entry .hide {
+  position: absolute;
+  width: 24px;
+  top: 57%;
+  left: 83%;
+}
+.form_entry .form__inbox_check {
+  flex-direction: row;
+  align-items: center;
+  margin-top: 20px;
+  width: 420px;
+}
+.form_entry .form__inbox_check label {
+  font-weight: 200;
+  font-size: 15px;
+  margin: 1px 0 2px 5px;
+  width: 150px;
+}
+.form_entry .form__inbox_check label:focus {
+  outline: 2px solid rgba(0, 0, 0, 0) !important;
+}
+.form_entry .what_password {
+  border: none;
+  background-color: transparent;
+  font-family: Montserrat;
+  font-weight: 200;
+  font-size: 15px;
+  margin-left: 80px;
+  padding: 0;
+}
+
+.inputs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  column-gap: 60px;
+  margin-top: 30px;
+}
+.modal-open body.modal-open {
+  overflow: hidden;
+}
+.modal-open .modal-overlay {
+  position: fixed;
+  z-index: 9;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.error {
+  height: 15px;
+  font-size: 12px;
+  color: #28241f;
+}
+input[type="submit"]:disabled {
+  background-color: #d9d9d9;
+}
+input[type="submit"]:disabled:hover {
+  outline: none;
+  color: white;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.modal {
+  background: #1e1e1e;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transform: translateY(-50px);
+  transition: transform 0.3s;
+}
+
+.modal.show-modal {
+  transform: translateY(0);
+}
+
+.modal-overlay.show-modal {
+  opacity: 1;
+  visibility: visible;
+}
+
+.close-modal {
+  float: right;
+  font-size: 28px;
+  cursor: pointer;
+  color: #28241f;
+}
+
+.submit-button {
+  background-color: #28241f;
+  color: white;
+  height: 90%;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.sl_slider {
+  display: flex;
+}
