@@ -1,0 +1,57 @@
+.grid-stack {
+    background: url('../img/gridstack/Scheme.svg') no-repeat center;
+    background-size: contain;
+}
+
+.grid-stack-item-content:has(div.square) {
+    background: url('../img/gridstack/Table_square.svg') no-repeat center;
+    background-size: contain;
+}
+
+.grid-stack-item-content:has(div.ractangle) {
+    background: url('../img/gridstack/Table_ractangle.svg') no-repeat center;
+    background-size: contain;
+}
+
+.grid-stack-item-content > .table-number {
+    color: #ffffff;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.grid-stack-item-content > .table-number-reserved {
+    color: #ffffff;
+    cursor: not-allowed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.grid-stack-item-content > button.btn.btn-outline-light.table-number,
+.grid-stack-item-content > button.btn.btn-outline-light.table-number-reserved{
+    border: none;
+}
+
+
+
+.btn .table-number,
+.reserve-table {
+    color: #000000 !important;
+    background: #ffffff;
+    opacity: 0.3;
+}
+.grid-stack-item-content > button.table-number.btn:active,
+.grid-stack-item-content > button.table-number.btn:hover {
+    color: #000000;
+    opacity: 0.5;
+}

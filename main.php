@@ -1,4 +1,6 @@
-<?php session_start(); ?>
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,6 +27,7 @@
     <div class="baner">
         <div>
             <h1>Hinkali House</h1>
+            <a href="reservation.php" class="more">Подробнее</a>
             <form action="menu.php" target="_blank">
                 <button class="more">К меню</button>
             </form>
@@ -128,5 +131,4 @@
     <script src="js/swiper-bundle.min.js"></script>
     <script src="js/index.js"></script>
 </body>
-
 </html>

@@ -38,7 +38,7 @@ if (isset($_POST['submit_enter'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link href="front/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../front/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="front/css/main.css" rel="stylesheet">
 
     <title>Sign in</title>
@@ -67,7 +67,7 @@ if (isset($_POST['submit_enter'])) {
     </form>
 </main>
 
-<script src="front/bootstrap/js/bootstrap.js"></script>
+<script src="../front/bootstrap/js/bootstrap.js"></script>
 
 <style>
     body {

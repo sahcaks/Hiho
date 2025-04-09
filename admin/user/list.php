@@ -48,13 +48,13 @@ if (mysqli_num_rows($result) > 0) {
                             <td><?= $item['email'] ?></td>
                             <td>
                                 <a class="btn btn-outline-success btn-sm"
-                                   href="user/edit?id=<?= $item['id_user'] ?>"><i
+                                   href="edit.php?id=<?= $item['id_user'] ?>"><i
                                             class="fa fa-pencil"></i></a>
                                 <a class="btn btn-outline-warning btn-sm"
-                                   href="user/view.php?id=<?= $item['id_user'] ?>"><i
+                                   href="view.php?id=<?= $item['id_user'] ?>"><i
                                             class="fa fa-eye"></i></a>
                                 <a class="btn btn-outline-danger btn-sm"
-                                   href="user/remove.php?id=<?= $item['id_user'] ?>"><i
+                                   href="remove.php?id=<?= $item['id_user'] ?>"><i
                                             class="fa fa-trash"></i></a>
                             </td>
                         </tr>

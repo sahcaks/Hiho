@@ -8,11 +8,13 @@ var modal_entry = document.getElementById("entry"); //модалка на авт
 var btnclose_reg = document.getElementsByClassName("close_reg")[0]; //закрыть модарку регистрации
 var btnclose_ent = document.getElementsByClassName("close_ent")[0]; //закрыть модаклу авторизации
 
-btnlogin.addEventListener("click", function () {
-  //открвть модалку на вход при клике на кноппочку
-  modal_entry.style.display = "block";
-  document.body.classList.add("modal-open");
-});
+if (!!btnlogin) {
+  btnlogin.addEventListener("click", function () {
+    //открвть модалку на вход при клике на кноппочку
+    modal_entry.style.display = "block";
+    document.body.classList.add("modal-open");
+  });
+}
 btnreg.addEventListener("click", function (event) {
   //открыть модалку на регистрацию при клике на кнопочку регистрации
   event.preventDefault();

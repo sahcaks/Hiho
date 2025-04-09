@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/../../database.php';
-require_once __DIR__ . '/../config.php';
+require_once __DIR__ . '/../../config/config.php';
 require_once __DIR__ . '/../../helper/helper.php';
 
 if (!isAuthenticated()) redirect(HOME_URL);
@@ -35,13 +35,6 @@ function isAdmin(string $email): bool
         return true;
     }
     return false;
-}
-
-function clear_string(mysqli $link, string $cl_str): string
-{
-    $cl_str = strip_tags($cl_str);
-    $cl_str = mysqli_real_escape_string($link, $cl_str);
-    return trim($cl_str);
 }
 
 function getDomain(): string

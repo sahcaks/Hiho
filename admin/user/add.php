@@ -43,7 +43,7 @@ if (mysqli_num_rows($result) > 0) {
                     <input name="password" type="password" class="form-control" id="password">
                 </div>
                 <div class="col-md-6">
-                    <label for="inputState" class="form-label">State</label>
+                    <label for="inputState" class="form-label">Role</label>
                     <select id="inputState" name="role_id" class="form-select">
                         <?php foreach ($roles as $role) { ?>
                             <option><?= $role['role_name'] ?></option>

@@ -102,11 +102,18 @@ header {
   width: 100%;
 }
 
+main {
+  flex: 1;
+}
+
 /* header {
   background-color: #80350b;
   font-family: Poiret One;
 } */
 body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   margin: 0;
   padding: 0;
   width: 100%;
@@ -217,6 +224,15 @@ a:hover {
   flex-direction: column;
   justify-content: center;
 }
+.reservation {
+  background-color: #80350b;
+  color: #fff;
+  font-family: Philosopher;
+  font-size: 32px;
+  margin-top: 4%;
+  border: none;
+  cursor: pointer;
+}
 .more {
   width: 45%;
   background-color: #28241f;
@@ -225,6 +241,7 @@ a:hover {
   font-size: 32px;
   margin-top: 4%;
   border: none;
+  cursor: pointer;
 }
 .baner .more {
   margin-left: 25%;
@@ -281,6 +298,7 @@ button {
 }
 footer {
   background-color: #28241f;
+  min-height: 50px;
   height: 150px;
   display: flex;
   box-sizing: border-box;
