@@ -42,7 +42,6 @@ function CATEGORIES($cat)
 function CARDS($cardsql)
 {
     include 'database.php';
-
     // Определяем кнопку в зависимости от логина пользователя
     $btn = isset($_SESSION['name']) ? "<img class='bucket' src='img/icons/bucket.svg' alt='Добавить в корзину'>" : '';
 
@@ -50,23 +49,17 @@ function CARDS($cardsql)
     $card_result = mysqli_query($link, $cardsql) or die("Ошибка запроса " . mysqli_error($link));
 
     // Проверяем, был ли выполнен запрос
-    if ($card_result) {
-        $rows = mysqli_num_rows($card_result);
-
-        // Проверяем количество строк результатов
-        if ($rows == 0) {
-            echo "<p>Нет доступных блюд для отображения.</p>";
-            return; // Выйти из функции, если нет данных
-        }
+    if (!empty($card_result->num_rows)) {
         // Перебираем строки результатов
-        for ($i = 0; $i < $rows; $i++) {
-            $row = mysqli_fetch_assoc($card_result);
+        foreach ($card_result->fetch_all(MYSQLI_ASSOC) as $row) {
+
+            //$row = mysqli_fetch_assoc($card_result);
 
             // Проверяем, корректно ли были извлечены данные
-            if (!$row) {
+            /*if (!$row) {
                 echo "<p>Ошибка при извлечении данных о блюде.</p>";
                 continue; // Пропускаем итерацию, если данные недоступны
-            }
+            }*/
 
             // Вывод карточки блюда
             echo "<div class='onecard'>";
@@ -80,8 +73,8 @@ function CARDS($cardsql)
             echo "<input type='hidden' name='id_dish' value='" . htmlspecialchars($row["id_dish"]) . "'>";
             echo "<button type='submit' style='background: none; border: none; padding: 0;'> $btn </button>";
             echo "</form>";
-            echo "</div>"; // Закрываем div.infcard
-            echo "</div>"; // Закрываем div.onecard
+            echo "</div>";
+            echo "</div>";
         }
     }
 }
@@ -102,4 +95,5 @@ function GET_CATEGORIES()
 
     return $categories;
 }
+
 ?>

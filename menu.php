@@ -36,7 +36,7 @@
                 $categories = GET_CATEGORIES();
                 foreach ($categories as $category) {
                     // Устанавливаем путь к изображению для каждой категории
-                    $imagePath = "/img/icons/$category.png"; // Замените на правильный путь к изображениям
+                    $imagePath = "img/icons/$category.png"; // Замените на правильный путь к изображениям
                     $checked = ($category === 'Основное меню') ? 'checked' : '';
 
                     echo "
@@ -55,8 +55,6 @@
                 <div id="search-results"></div>
                 <div class="menu-container" id="main-menu">
                     <?php
-                    session_start();
-
                     if (isset($_GET['category'])) {
                         $category_name = $_GET['category'];
                         $cat = "SELECT * FROM category WHERE name_category = '$category_name'";

@@ -1,4 +1,5 @@
 let table = new DataTable('#table-data', {
+    "order": [[8, 'desc']],
     "columnDefs": [
         {"className": "dt-center", "targets": "_all"} //all text in columns align center
     ],

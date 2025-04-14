@@ -13,3 +13,12 @@ function clear_string(mysqli $link, string $cl_str): string
     $cl_str = mysqli_real_escape_string($link, $cl_str);
     return trim($cl_str);
 }
+
+function ensurePostRequest()
+{
+    if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+        http_response_code(405); // Метод не разрешен
+        echo json_encode(['error' => 'Метод запроса не поддерживается.']);
+        exit;
+    }
+}

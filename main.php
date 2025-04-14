@@ -29,7 +29,7 @@
             <form action="menu.php" target="_blank">
             </form>
         </div>
-        <img src="img\dishes.svg">
+        <img src="img/dishes.svg">
     </div>
     <div class="about">
         <div class="text_about">
@@ -49,7 +49,7 @@
                 <button class="more">Подробнее</button>
             </form>
         </div>
-        <img src="img\restaurant.svg">
+        <img src="img/restaurant.svg">
     </div>
     <div class="anatomy">
         <h2>Анатомия хинкали</h2>
@@ -58,9 +58,9 @@
     <div class="menu_num">
         <h2>Вкусно как дома</h2>
         <div class="menu">
-            <a href="menu.php"><img src="img\menu1.svg"></a>
-            <a href="menu.php"><img src="img\menu2.svg"></a>
-            <a href="menu.php"><img src="img\menu3.svg"></a>
+            <a href="menu.php"><img src="img/menu1.svg"></a>
+            <a href="menu.php"><img src="img/menu2.svg"></a>
+            <a href="menu.php"><img src="img/menu3.svg"></a>
         </div>
     </div>
     <div class="reviews">
@@ -74,23 +74,23 @@
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
                                 <div class="review__item">
-                                    <img src="img\card1.svg">
+                                    <img src="img/card1.svg">
                                 </div>
                             </div>
 
                             <div class="swiper-slide">
                                 <div class="review__item">
-                                    <img src="img\card2.svg">
+                                    <img src="img/card2.svg">
                                 </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="review__item">
-                                    <img src="img\card3.svg">
+                                    <img src="img/card3.svg">
                                 </div>
                             </div>
                             <div class="swiper-slide">
                                 <div class="review__item">
-                                    <img src="img\card4.svg">
+                                    <img src="img/card4.svg">
                                 </div>
                             </div>
                         </div>
