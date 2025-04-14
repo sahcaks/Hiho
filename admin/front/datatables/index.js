@@ -1,7 +1,7 @@
 let table = new DataTable('#table-data', {
     "order": [[8, 'desc']],
     "columnDefs": [
-        {"className": "dt-center", "targets": "_all"} //all text in columns align center
+        {"className": "dt-center", "targets": "_all"}
     ],
     "dom": "<'row mb-3'<'col-6 col-md-4'l><'col-6 col-md-4 'B><'col-6 col-md-4 col-sm-12'f>>" +
         "<'row my-4'<'col-sm-12'tr>>" +
