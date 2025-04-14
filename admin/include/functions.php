@@ -8,9 +8,20 @@ if (!isAuthenticated()) redirect(HOME_URL);
 const ROLES = [
     'admin' => 1,
 ];
+
+const TABLE_STATUES = [
+    0 => 'Open',
+    1 => 'Pending',
+    2 => 'Reserved',
+];
 function isAuthenticated(): bool
 {
     return isset($_SESSION['name']);
+}
+
+function getStatus(int $status): string
+{
+    return TABLE_STATUES[$status] ?? '';
 }
 
 function hasPermission(string $permission_name): bool
