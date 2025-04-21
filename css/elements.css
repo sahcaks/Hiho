@@ -188,7 +188,9 @@ input[type="submit"]:disabled:hover {
 }
 
 .modal {
-  background: #1e1e1e;
+  width: 50%;
+  height: 50%;
+  background: #f8f5f0;
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -215,7 +217,6 @@ input[type="submit"]:disabled:hover {
 .submit-button {
   background-color: #28241f;
   color: white;
-  height: 90%;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;

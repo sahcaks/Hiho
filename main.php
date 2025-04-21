@@ -1,6 +1,4 @@
-<?php
-session_start();
-?>
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,9 +25,8 @@ session_start();
     <div class="baner">
         <div>
             <h1>Hinkali House</h1>
-            <a href="reservation.php" class="more">Подробнее</a>
+            <a href="reservation.php" class="more">Забронировать</a>
             <form action="menu.php" target="_blank">
-                <button class="more">К меню</button>
             </form>
         </div>
         <img src="img\dishes.svg">
@@ -131,4 +128,5 @@ session_start();
     <script src="js/swiper-bundle.min.js"></script>
     <script src="js/index.js"></script>
 </body>
+
 </html>
