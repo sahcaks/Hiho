@@ -33,6 +33,7 @@
             height: 100%;
             overflow: auto;
             background-color: rgba(0, 0, 0, 0.7);
+
         }
 
         .modal-content {
@@ -43,6 +44,17 @@
             border: 1px solid #888;
             width: 40%;
             border-radius: 5px;
+        }
+
+        .modal-content h2 {
+            margin-left: 35%;
+        }
+
+        #modal-review-form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         .close {
