@@ -15,6 +15,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="css/swiper-bundle.min.css">
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=1a612f5d-96d1-43d2-adef-8c73649fe8ea&lang=ru_RU"
+        type="text/javascript"></script>
 </head>
 
 <body>
@@ -25,10 +27,10 @@
     <div class="location">
         <h2>Где мы находимся?</h2>
         <div class="map">
-            <img src="img/map.svg">
+            <div id="map" class="map_ya"></div>
             <div class="adress">
                 <div class="ad1">
-                    <h2><img src="img/icons/geo.svg"> г. Минск, ул. Белорусская, 21</h2>
+                    <h2><img src="img/icons/geo.svg">г. Минск, пер. Дубравинский, 5</h2>
                 </div>
                 <div class="ad2">
                     <h2><img src="img/icons/phone.svg"> +375259592122</h2>
@@ -42,7 +44,7 @@
     <footer>
         <div class="previev">
             <h3>Мы рядом с вами!</h3>
-            <h3>г. Минск, ул. Белорусская, 21</h3>
+            <h3>г. Минск, пер. Дубравинский, 5</h3>
         </div>
         <div class="previev">
             <h3>Забронируйте столик</h3>
@@ -61,13 +63,39 @@
                 <h3>Отзывы</h3>
             </div>
             <img class="logo_foot" src="img\icons\logo.svg">
-            <h3>2023 © Hilkali House | khinkalihouse.by️</h3>
+            <h3>2025 © Hilkali House | khinkalihouse.by️</h3>
         </div>
     </footer>
+    <script>
+        ymaps.ready(function () {
+            var myMap = new ymaps.Map("map", {
+                center: [53.877731, 27.506459],
+                zoom: 14,
+            });
+
+            var myPlacemark = new ymaps.Placemark(
+                [53.877731, 27.506459],
+                {
+                    hintContent: "HiHo",
+                    balloonContent: "<strong>HiHo</strong><br>Адрес: пер. Дубравинский, 5",
+                },
+                {
+                    iconLayout: "default#image",
+                    iconImageHref: "../img/icons/gps.png",
+                    iconImageSize: [42, 42],
+                    iconImageOffset: [-21, -42],
+                    hideIconOnBalloonOpen: false,
+                }
+            );
+
+            myMap.geoObjects.add(myPlacemark);
+        });
+    </script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="js/modal.js"></script>
     <script src="js/index.js"></script>
     <script src="js/swiper-bundle.min.js"></script>
+
 </body>
 
 </html>
