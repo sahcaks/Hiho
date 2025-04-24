@@ -19,7 +19,7 @@ export default class FetchAPI {
 
             return this.handleResponse(response);
         } catch (error) {
-            console.error('Error during GET request:', error);
+            console.error('Error during GET request:', error.message);
             throw error;
         }
     }
@@ -29,24 +29,26 @@ export default class FetchAPI {
         try {
             const response = await fetch(new URL(endpoint, this.baseUrl), {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(body),
+                body: body,
             });
 
-            return this.handleResponse(response);
+            return await this.handleResponse(response);
         } catch (error) {
-            console.error('Error during POST request:', error);
-            throw error;
+            throw {description: error};
         }
     }
 
     // Response handler for success or failure
     async handleResponse(response) {
         if (!response.ok) {
-            const errorData = await response.json();
-            throw new Error(errorData.message || 'Something went wrong!');
+            let errorMessage = `HTTP error! Status: ${response.status}`;
+            try {
+                const errorData = await response.json();
+                errorMessage = errorData.error || errorMessage;
+            } catch (parseError) {
+                // Keep default error message if parsing fails
+            }
+            throw new Error(errorMessage);
         }
         return response.json();
     }

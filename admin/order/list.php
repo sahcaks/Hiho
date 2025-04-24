@@ -2,17 +2,17 @@
 session_start();
 
 global $link;
-require_once __DIR__ . '/../include/functions.php';
-
+require_once dirname(__DIR__) . '/include/functions.php';
+require_once 'functions.php';
 
 $result = mysqli_query($link, "SELECT * FROM orders");
 $data = [];
 if (mysqli_num_rows($result) > 0) {
     while ($row = $result->fetch_assoc()) {
-        $data[] = $row;
+        $data[$row['id']] = $row;
+        $data[$row['id']]['items'] = getOrderItems($link, $row['id']);
     }
 }
-
 ?>
 
 <!doctype html>
@@ -36,7 +36,6 @@ if (mysqli_num_rows($result) > 0) {
                         <th>Name</th>
                         <th>Phone</th>
                         <th>Order list</th>
-                        <th>Actions</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -53,20 +52,8 @@ if (mysqli_num_rows($result) > 0) {
                                         echo '<li> Weight: ' . $value['weight'] . '</li>';
                                         echo '<li> Price: ' . $value['price'] . '</li>';
                                         echo '<li> Recipes: ' . $value['recipes'] . '</li>';
-                                    }, unserialize($item['cart_items'])) ?>
+                                    }, $item['items']) ?>
                                 </ul>
-                            </td>
-                            <td>
-                                <a class="btn btn-outline-success btn-sm"
-                                   href="order/edit.php?id=<?= $item['id'] ?>"><i
-                                            class="fa fa-pencil"></i></a>
-                                <a class="btn btn-outline-warning btn-sm"
-                                   href="order/view.php?id=<?= $item['id'] ?>"><i
-                                            class="fa fa-eye"></i></a>
-                                <a class="btn btn-outline-danger btn-sm"
-                                   href="order/remove.php?id=<?= $item['id'] ?>"><i
-                                            class="fa fa-trash"></i></a>
-
                             </td>
                         </tr>
                     <?php } ?>

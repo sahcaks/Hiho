@@ -33,7 +33,11 @@ if ($userExists) {
     $_SESSION['name'] = $name;
     $_SESSION['role_id'] = $roleId[0];
     mysqli_close($link);
-    $data = ['redirect_url' => "http://localhost:8888/hiho/admin/"];
+    if ($roleId[0] == '3') {
+        $data = ['redirect_url' => "http://localhost:8888/hiho/admin/"];
+    } else {
+        $data = ['redirect_url' => "http://localhost:8888/hiho/"];
+    }
     echo json_encode($data);
 } else {
     echo 'Неверный пароль';    // ответ клиенту

@@ -22,7 +22,7 @@
             <p class="lead">
                 The page you’re looking for doesn’t exist.
             </p>
-            <button onclick="window.history.go(-1); return false;" class="btn btn-primary">Back</button>
+            <button onclick="window.history.go(-1); return false;" class="btn btn-primary">Назад</button>
         </div>
 
     </div>

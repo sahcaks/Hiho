@@ -19,9 +19,9 @@ const toaster = new Toaster();
                     message: 'Заполните все поля правильно!',
                     type: 'danger',
                 });
+                form.classList.add('was-validated');
                 return false;
             }
-            form.classList.add('was-validated');
         }, false);
     });
 })();

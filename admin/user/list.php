@@ -25,10 +25,10 @@ if (mysqli_num_rows($result) > 0) {
         <?php include(__DIR__ . '/../include/sidebar.php'); ?>
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <?php if (hasPermission('create_post')) { ?>
-            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">Users</h1>
-                <a class="btn btn-success" href="add.php"> <i class="fa fa-plus"></i> Create</a>
-            </div>
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Пользователи</h1>
+                    <a class="btn btn-success" href="add.php"> <i class="fa fa-plus"></i> Добавить</a>
+                </div>
             <?php } ?>
             <div class="table-responsive">
                 <table id="table-data" class="table table-striped text-center align-middle" style="width:100%">
@@ -53,9 +53,12 @@ if (mysqli_num_rows($result) > 0) {
                                 <a class="btn btn-outline-warning btn-sm"
                                    href="view.php?id=<?= $item['id_user'] ?>"><i
                                             class="fa fa-eye"></i></a>
-                                <a class="btn btn-outline-danger btn-sm"
-                                   href="remove.php?id=<?= $item['id_user'] ?>"><i
-                                            class="fa fa-trash"></i></a>
+                                <?php if ($item['id_user'] !== $_SESSION['id_user']) { ?>
+                                    <a class="btn btn-outline-danger btn-sm" data-bs-toggle="modal"
+                                       data-bs-target="#confirmDeleteModal" data-url="actions/remove.php"
+                                       data-remove-id="<?= $item['id_user'] ?>"><i
+                                                class="fa fa-trash"></i></a>
+                                <?php } ?>
                             </td>
                         </tr>
                     <?php } ?>

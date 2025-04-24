@@ -24,7 +24,7 @@ if (mysqli_num_rows($result) > 0) {
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h1 class="h2">Category</h1>
-                <a class="btn btn-success" href="add.php"> <i class="fa fa-plus"></i> Create</a>
+                <a class="btn btn-success" href="add.php"> <i class="fa fa-plus"></i> Добавить</a>
             </div>
             <div class="table-responsive">
                 <table id="table-data" class="table table-striped text-center align-middle" style="width:100%">
@@ -42,14 +42,11 @@ if (mysqli_num_rows($result) > 0) {
                             <td><?= $item['name_category'] ?></td>
                             <td>
                                 <a class="btn btn-outline-success btn-sm"
-                                   href="category/edit.php?id=<?= $item['id_category'] ?>"><i
+                                   href="edit.php?id=<?= $item['id_category'] ?>"><i
                                         class="fa fa-pencil"></i></a>
-                                <a class="btn btn-outline-warning btn-sm"
-                                   href="category/view.php?id=<?= $item['id_category'] ?>"><i
-                                        class="fa fa-eye"></i></a>
-                                <a class="btn btn-outline-danger btn-sm"
-                                   href="category/remove.php?id=<?= $item['id_category'] ?>"><i
-                                        class="fa fa-trash"></i></a>
+                                <a class="btn btn-outline-danger btn-sm" data-bs-toggle="modal"
+                                   data-bs-target="#confirmDeleteModal" data-url="actions/remove.php" data-remove-id="<?= $item['id_category'] ?>"><i
+                                            class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                     <?php } ?>

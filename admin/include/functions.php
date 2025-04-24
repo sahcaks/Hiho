@@ -1,4 +1,7 @@
 <?php
+
+use app\helper\Enum\TableStatusEnum;
+
 require_once __DIR__ . '/../../database.php';
 require_once __DIR__ . '/../../config/config.php';
 require_once __DIR__ . '/../../helper/helper.php';
@@ -9,11 +12,7 @@ const ROLES = [
     'admin' => 1,
 ];
 
-const TABLE_STATUES = [
-    0 => 'Open',
-    1 => 'Pending',
-    2 => 'Reserved',
-];
+
 function isAuthenticated(): bool
 {
     return isset($_SESSION['name']);
@@ -21,7 +20,7 @@ function isAuthenticated(): bool
 
 function getStatus(int $status): string
 {
-    return TABLE_STATUES[$status] ?? '';
+    return TableStatusEnum::STATUS_LIST[$status] ?? '';
 }
 
 function hasPermission(string $permission_name): bool

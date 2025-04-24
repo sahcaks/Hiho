@@ -3,6 +3,11 @@ import Toaster from "../modules/notification/toaster.js";
 const MAIN_URL = location.protocol + "//" + location.host + "/hiho/";
 const GET_TABLE_URL = MAIN_URL + "reservation/getTable.php";
 const SET_RESERVE_URL = MAIN_URL + "reservation/reserve.php";
+const STATUS_LIST = {
+    'Open': 0,
+    'Pending': 1,
+    'Reserved': 2,
+};
 const toaster = new Toaster();
 const submitButton = document.getElementById('save');
 
@@ -75,12 +80,32 @@ async function save() {
         });
 }
 
-async function loadGrid() {
-    serializedData = convertToGridStackObject(await getTables());
+function getClassForStatusButton(status) {
+    switch (status) {
+        case STATUS_LIST.Pending:
+            return 'btn-warning table-number-reserve'
+        case STATUS_LIST.Reserved:
+            return 'btn-danger table-number-reserved'
+        default:
+            return 'btn-outline-light table-number'
+    }
+}
 
+function getTextForStatusButton(status, id) {
+    switch (status) {
+        case STATUS_LIST.Pending:
+            return 'Reserve'
+        case STATUS_LIST.Reserved:
+            return 'Reserved'
+        default:
+            return '№ ' + id
+    }
+}
+
+async function loadGrid() {
     serializedData = (await getTables()).map((value) => {
         let data = convertToGridStackObject(value);
-        data.content += `<button data-table-id="${data.id}" class="btn ${data.status ? 'btn-danger table-number-reserved' : 'btn-outline-light table-number'}"><div>${data.status ? 'Reserved' : `№ ${data.id}`}</div></button> ${data.content ? data.content : ''}`;
+        data.content += `<button data-table-id="${data.id}" class="btn ${getClassForStatusButton(data.status)}"><div>${getTextForStatusButton(data.status, data.id)}</div></button> ${data.content ? data.content : ''}`;
         Object.assign(data, JSON.parse(data.others));
         delete data.others;
         return data;
@@ -91,10 +116,10 @@ async function loadGrid() {
 function convertToGridStackObject(data) {
     return {
         id: parseInt(data.id),
-        status: !!parseInt(data.status),
+        status: parseInt(data.status),
         x: data.x_coordinate,
         y: data.y_coordinate,
-        w: data.weight,
+        w: data.width,
         h: data.height,
         content: data.content,
         others: data.others

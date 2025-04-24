@@ -154,10 +154,8 @@ $("#formbtn2").bind("click", function (e) {
         inputError("password_entry", data);
       } else {
         alert("Вы вошли в аккаунт");
-        function reload() {
-          top.location = "main.php";
-        }
-        reload();
+        let response = JSON.parse(data);
+        window.location.replace(response.redirect_url)
       }
     },
   });

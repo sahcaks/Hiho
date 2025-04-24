@@ -1,6 +1,8 @@
 <?php
 
-function redirect($url, $permanent = false)
+use JetBrains\PhpStorm\NoReturn;
+
+#[NoReturn] function redirect($url, $permanent = false)
 {
     header('Location: ' . $url, true, $permanent ? 301 : 302);
 
@@ -14,7 +16,7 @@ function clear_string(mysqli $link, string $cl_str): string
     return trim($cl_str);
 }
 
-function ensurePostRequest()
+function ensurePostRequest(): void
 {
     if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
         http_response_code(405); // Метод не разрешен

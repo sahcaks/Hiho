@@ -30,7 +30,7 @@
         <div class="container">
             <nav class="container header__nav-center">
                 <button class="burger" onclick="openNav()"><img src="img/icons/burger.png" alt="burger-menu"></button>
-                <a class="logo_head" href="main.php">
+                <a class="logo_head" href="index.php">
                     <img src="img\icons\logo.svg" alt="logo">
                 </a>
                 <ul>

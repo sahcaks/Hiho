@@ -25,7 +25,8 @@
     width: 100%;
 }
 
-.grid-stack-item-content > .table-number-reserved {
+.grid-stack-item-content > .table-number-reserved,
+.grid-stack-item-content > .table-number-reserve {
     color: #ffffff;
     cursor: not-allowed;
     display: flex;
@@ -38,11 +39,14 @@
 }
 
 .grid-stack-item-content > button.btn.btn-outline-light.table-number,
-.grid-stack-item-content > button.btn.btn-outline-light.table-number-reserved{
+.grid-stack-item-content > button.btn.btn-outline-light.table-number-reserve,
+.grid-stack-item-content > button.btn.btn-outline-light.table-number-reserved {
     border: none;
 }
 
-
+.grid-stack-item-content > .table-number-reserved:active {
+    color: #ffffff;
+}
 
 .btn .table-number,
 .reserve-table {
@@ -50,6 +54,7 @@
     background: #ffffff;
     opacity: 0.3;
 }
+
 .grid-stack-item-content > button.table-number.btn:active,
 .grid-stack-item-content > button.table-number.btn:hover {
     color: #000000;

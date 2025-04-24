@@ -7,4 +7,4 @@ const PAGE_404 = '/pages/errors/404.php';
 
 const URL_MAIN_IMG = "/hiho/img";
 const ADMIN_FRONT_URL = MAIN_URL . "hiho/admin/front/";
-const HOME_URL = "http://localhost:8888/hiho/main.php";
+const HOME_URL = "http://localhost:8888/hiho/";

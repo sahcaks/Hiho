@@ -29,7 +29,7 @@ if ($result) {
 		mysqli_close($link);
 		print "<script language='Javascript' type='text/javascript'> 
 				alert('Вы зарегистрированы');
-			function reload(){top.location = 'main.php'};
+			function reload(){top.location = 'index.php'};
 			reload();
 			</script>";
 	}
