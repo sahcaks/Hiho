@@ -9,7 +9,7 @@ global $link;
 
 ensurePostRequest();
 $id = intval($_POST['id']);
-$uploadDir = dirname(__DIR__, 3) . '/img/user/' . $id;
+$uploadDir = dirname(__DIR__, 3) . '/img/user/' . $id . '/';
 
 if (!isset($_FILES['image'])) {
     Response::sendBadRequest('Файл не был передан.');

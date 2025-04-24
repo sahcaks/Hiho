@@ -20,9 +20,9 @@ $user = $stmt->get_result()->fetch_assoc();
 
 <!doctype html>
 <html lang="en">
-<?php include(__DIR__ . '/../include/head.php'); ?>
+<?php include(dirname(__DIR__) . '/../include/head.php'); ?>
 <body>
-<?php include(__DIR__ . '/../include/header.php'); ?>
+<?php include(dirname(__DIR__) . '/../include/header.php'); ?>
 <style>
     .image-card {
         position: relative;
@@ -72,18 +72,18 @@ $user = $stmt->get_result()->fetch_assoc();
 </style>
 <div class="container-fluid h-100">
     <div class="row">
-        <?php include(__DIR__ . '/../include/sidebar.php'); ?>
+        <?php include(dirname(__DIR__) . '/../include/sidebar.php'); ?>
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">Редактирование пользователя</h1>
-                <a class="btn btn-secondary" href="list.php"> <i class="fa fa-arrow-left"></i> Назад</a>
+                <h1 class="h2">Редактирование профиля</h1>
+                <a class="btn btn-secondary" href="view.php"> <i class="fa fa-arrow-left"></i> Назад</a>
             </div>
             <form method="POST" id="update" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
                 <div class="mb-4 d-flex justify-content-around align-items-center">
                     <div class="d-flex align-self-baseline">
                         <div class="image-card">
                             <?php if (!empty($user['image'])) { ?>
-                                <img src="../../img/user/<?= $user['id_user'] . '/' . htmlspecialchars($user['image']) ?>"
+                                <img src="../../../img/user/<?= $user['id_user'] . '/' . htmlspecialchars($user['image']) ?>"
                                      alt="Текущее изображение"
                                      id="currentImage">
                             <?php } ?>
@@ -169,8 +169,8 @@ $user = $stmt->get_result()->fetch_assoc();
     </div>
 </div>
 
-<?php include(__DIR__ . '/../include/scripts.php'); ?>
-<script type="module" src="../front/js/main/actions/index.js"></script>
-<script type="module" src="../front/js/user/index.js"></script>
+<?php include(dirname(__DIR__) . '/../include/scripts.php'); ?>
+<script type="module" src="../../front/js/main/actions/index.js"></script>
+<script type="module" src="../../front/js/user/index.js"></script>
 </body>
 </html>

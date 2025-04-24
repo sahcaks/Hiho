@@ -17,7 +17,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link <?= isActiveLink("/user/list.php") ?>"
-                   href="<?= ADMIN_URL ?>/user/profile/view.php">
+                   href="<?= ADMIN_URL ?>/user/profile/list.php">
                     <span data-feather="users" class="align-text-bottom"></span>
                     <i class="fa fa-user"></i> Profile
                 </a>

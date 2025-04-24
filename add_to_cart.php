@@ -5,7 +5,6 @@ require 'database.php';
 if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = array();
 }
-
 if (isset($_POST['id_dish'])) {
     $id = $_POST['id_dish'];
     $query = "SELECT * FROM dish WHERE id_dish = '$id'";
@@ -21,7 +20,6 @@ if (isset($_POST['id_dish'])) {
             $_SESSION['cart'][$id]['quantity'] = 1;
         }
     }
+    echo json_encode(['status' => true, 'total' => count($_SESSION['cart'])]);
 }
-header('Location: cart.php');
-exit();
-?>
+echo json_encode(['status' => false]);

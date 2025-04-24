@@ -43,23 +43,29 @@ function CARDS($cardsql)
 {
     include 'database.php';
     // Определяем кнопку в зависимости от логина пользователя
-    $btn = isset($_SESSION['name']) ? "<img class='bucket' src='img/icons/bucket.svg' alt='Добавить в корзину'>" : '';
 
     // Выполняем запрос
     $card_result = mysqli_query($link, $cardsql) or die("Ошибка запроса " . mysqli_error($link));
 
     // Проверяем, был ли выполнен запрос
-    if (!empty($card_result->num_rows)) {
-        // Перебираем строки результатов
-        foreach ($card_result->fetch_all(MYSQLI_ASSOC) as $row) {
+    if ($card_result) {
+        $rows = mysqli_num_rows($card_result);
 
-            //$row = mysqli_fetch_assoc($card_result);
+        // Проверяем количество строк результатов
+        if ($rows == 0) {
+            echo "<p>Нет доступных блюд для отображения.</p>";
+            return; // Выйти из функции, если нет данных
+        }
+        // Перебираем строки результатов
+        for ($i = 0; $i < $rows; $i++) {
+            $row = mysqli_fetch_assoc($card_result);
 
             // Проверяем, корректно ли были извлечены данные
-            /*if (!$row) {
+            if (!$row) {
                 echo "<p>Ошибка при извлечении данных о блюде.</p>";
                 continue; // Пропускаем итерацию, если данные недоступны
-            }*/
+            }
+            $btn = isset($_SESSION['name']) ? "<img data-id='" . $row["id_dish"] . "' class='bucket' src='img/icons/bucket.svg' alt='Добавить в корзину'>" : '';
 
             // Вывод карточки блюда
             echo "<div class='onecard'>";
@@ -69,12 +75,9 @@ function CARDS($cardsql)
             echo "<p class='description'>" . htmlspecialchars($row["recipes"]) . "</p>";
             echo "<div class='infcard'>";
             echo "<p class='price'>" . htmlspecialchars($row["price"]) . ' руб.' . "</p>";
-            echo "<form action='add_to_cart.php' method='post' style='display: inline;'>";
-            echo "<input type='hidden' name='id_dish' value='" . htmlspecialchars($row["id_dish"]) . "'>";
-            echo "<button type='submit' style='background: none; border: none; padding: 0;'> $btn </button>";
-            echo "</form>";
-            echo "</div>";
-            echo "</div>";
+            echo "<button class='add-to-cart' style='background: none; border: none; padding: 0;'> $btn </button>";
+            echo "</div>"; // Закрываем div.infcard
+            echo "</div>"; // Закрываем div.onecard
         }
     }
 }

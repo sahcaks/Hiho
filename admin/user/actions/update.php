@@ -29,8 +29,8 @@ try {
     if (!empty($password)) {
         $salt = mt_rand(100, 999);
         $password = md5(md5($password) . $salt);
-        $stmt = $link->prepare("UPDATE user SET password = ? WHERE id_user = ?");
-        $stmt->bind_param("ss", $password, $id);
+        $stmt = $link->prepare("UPDATE user SET password = ?, salt = ? WHERE id_user = ?");
+        $stmt->bind_param("sss", $password, $salt, $id);
         if (!$stmt->execute()) {
             throw new Exception('Ошибка обновления пароля: ' . $stmt->error);
         }
