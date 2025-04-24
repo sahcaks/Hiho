@@ -60,6 +60,7 @@ try {
     calculateAndAddBonuses($link, $userId, $orderId, $total);
     $link->commit();
     unset($_SESSION['cart']);
+    $_SESSION['cart'] = [];
     Response::sendSuccess(['status' => true, 'description' => 'Заказ успешно оформлен!']);
 } catch (Exception $e) {
     $link->rollback();

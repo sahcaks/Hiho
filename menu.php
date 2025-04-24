@@ -158,6 +158,8 @@ include 'header.php';
                 } else {
                     $('#main-menu').show(); // Показываем основное меню, если ничего не найдено
                 }
+                loadEventToAddCart();
+
             }
         });
     }
@@ -192,24 +194,26 @@ include 'header.php';
         });
     }
 
-    let carts = document.querySelectorAll('button.add-to-cart');
-    const MAIN_URL = location.protocol + "//" + location.host + "/hiho/";
-    if (carts.length > 0) {
-        Array.prototype.slice.call(carts).forEach(function (cart) {
-            cart.addEventListener('click', async function (element) {
-                let data = new FormData();
-                data.append('id_dish', element.target.dataset.id);
-                await fetch(MAIN_URL + '/add_to_cart.php', {
-                    method: 'POST',
-                    body: data
-                }).then((response) => {
-                    if (response.ok) {
-                        let currentCount = parseInt(document.getElementById('cart-count').textContent);
-                        document.getElementById('cart-count').innerHTML = currentCount + 1;
-                    }
-                })
+    function loadEventToAddCart() {
+        let carts = document.querySelectorAll('button.add-to-cart');
+        const MAIN_URL = location.protocol + "//" + location.host + "/hiho/";
+        if (carts.length > 0) {
+            Array.prototype.slice.call(carts).forEach(function (cart) {
+                cart.addEventListener('click', async function (element) {
+                    let data = new FormData();
+                    data.append('id_dish', element.target.dataset.id);
+                    await fetch(MAIN_URL + '/add_to_cart.php', {
+                        method: 'POST',
+                        body: data
+                    }).then((response) => {
+                        if (response.ok) {
+                            let currentCount = parseInt(document.getElementById('cart-count').textContent);
+                            document.getElementById('cart-count').innerHTML = currentCount + 1;
+                        }
+                    })
+                });
             });
-        });
+        }
     }
 </script>
 </body>

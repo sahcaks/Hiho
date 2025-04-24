@@ -32,6 +32,7 @@ if ($userExists) {
     $roleId = mysqli_fetch_row($result);
     $_SESSION['name'] = $name;
     $_SESSION['role_id'] = $roleId[0];
+    $_SESSION['cart'] = [];
     mysqli_close($link);
     if ($roleId[0] == '3') {
         $data = ['redirect_url' => "http://localhost:8888/hiho/admin/"];

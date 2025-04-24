@@ -116,9 +116,6 @@
                     src="img\icons\tg.svg"></div>
         </div>
         <div class="confid">
-            <div class="nav">
-                <a href="calories.rar" download>Рассчитай калории на день!</a>
-            </div>
             <img class="logo_foot" src="img\icons\logo.svg">
             <h3>2023 © Hilkali House | khinkalihouse.by️</h3>
         </div>
