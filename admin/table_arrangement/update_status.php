@@ -11,14 +11,13 @@ global $link;
 ensurePostRequest();
 
 $status = intval($_POST["status"]);
-$table_id = intval($_POST["table_id"]);
 $reservation_id = intval($_POST["reservation_id"]);
 
 $link->begin_transaction();
 
 try {
-    $stmt1 = $link->prepare("UPDATE tables SET status = ? WHERE id = ?");
-    $stmt1->bind_param('ii', $status, $table_id);
+    $stmt1 = $link->prepare("UPDATE reservations SET status = ? WHERE id = ?");
+    $stmt1->bind_param('ii', $status, $reservation_id);
 
     if (!$stmt1->execute()) {
         throw new Exception('Упс! возникла непредвиденная ошибка, свяжитесь с администратором!');

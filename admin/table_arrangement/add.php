@@ -6,9 +6,7 @@ session_start();
 require_once dirname(__DIR__) . '/../config/config.php';
 global $link;
 
-$query = $link->prepare("SELECT id, table_number FROM `tables` WHERE status = ?");
-$open = TableStatusEnum::OPEN;
-$query->bind_param("i", $open);
+$query = $link->prepare("SELECT id, table_number FROM `tables`");
 $query->execute();
 $tables = $query->get_result()->fetch_all(MYSQLI_ASSOC);
 ?>
@@ -42,14 +40,19 @@ $tables = $query->get_result()->fetch_all(MYSQLI_ASSOC);
                     <div class="invalid-feedback">Введите имя длиной не менее 2 символов.</div>
                 </div>
                 <div class="col-md-6">
+                    <label for="time-start" class="form-label">Время начала</label>
+                    <select class="form-control" id="time-start" name="time_start" required></select>
+                    <div class="invalid-feedback">Выберите правильное время начала!</div>
+                </div>
+                <div class="col-md-6">
+                    <label for="time-end" class="form-label">Время окончания</label>
+                    <select class="form-control" id="time-end" name="time_end" required></select>
+                    <div class="invalid-feedback">Выберите правильное время окончания!</div>
+                </div>
+                <div class="col-md-6">
                     <label for="date" class="form-label">Дата</label>
                     <input type="date" class="form-control" id="date" name="date" value="" required>
                     <div class="invalid-feedback">Выберите дату.</div>
-                </div>
-                <div class="col-md-6">
-                    <label for="time" class="form-label">Время</label>
-                    <input type="time" class="form-control" id="time" name="time" value="" required>
-                    <div class="invalid-feedback">Выберите время.</div>
                 </div>
                 <div class="col-md-6">
                     <label for="capacity" class="form-label">Количество человек</label>

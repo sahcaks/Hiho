@@ -76,7 +76,7 @@ $user = $stmt->get_result()->fetch_assoc();
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h1 class="h2">Редактирование профиля</h1>
-                <a class="btn btn-secondary" href="view.php"> <i class="fa fa-arrow-left"></i> Назад</a>
+                <a class="btn btn-secondary" href="list.php"> <i class="fa fa-arrow-left"></i> Назад</a>
             </div>
             <form method="POST" id="update" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
                 <div class="mb-4 d-flex justify-content-around align-items-center">

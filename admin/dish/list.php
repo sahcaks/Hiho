@@ -23,7 +23,7 @@ if (mysqli_num_rows($result) > 0) {
         <?php include(__DIR__ . '/../include/sidebar.php'); ?>
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">Dish</h1>
+                <h1 class="h2">Блюда</h1>
                 <a class="btn btn-success" href="add.php"> <i class="fa fa-plus"></i> Добавить</a>
             </div>
             <div class="table-responsive">
@@ -32,7 +32,7 @@ if (mysqli_num_rows($result) > 0) {
                     <tr>
                         <th>Id</th>
                         <th>Image</th>
-                        <th>Category</th>
+                        <th>Категории</th>
                         <th>Weight</th>
                         <th>Recipes</th>
                         <th>Price</th>

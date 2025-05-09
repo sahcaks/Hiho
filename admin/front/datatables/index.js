@@ -1,5 +1,5 @@
 let table = new DataTable('#table-data', {
-    "order": [[8, 'desc']],
+    "order": [[9, 'desc']],
     "columnDefs": [
         {"className": "dt-center", "targets": "_all"}
     ],

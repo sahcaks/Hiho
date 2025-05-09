@@ -1,8 +1,10 @@
 <?php
+
+use app\helper\Enum\TableStatusEnum;
+
 session_start();
 
-require_once __DIR__ . "../../database.php";
-require_once __DIR__ . "../../helper/helper.php";
+require_once dirname(__DIR__) . "/config/config.php";
 global $link;
 
 ensurePostRequest();
@@ -10,24 +12,21 @@ ensurePostRequest();
 $phone = $_POST["phone"];
 $name = $_POST["name"];
 $date = $_POST["date"];
-$time = $_POST["time"];
+$time_start = (new DateTime($_POST["time_start"]))->format('H:i:s') ?? null;
+$time_end = (new DateTime($_POST["time_end"]))->format('H:i:s') ?? null;
 $capacity = $_POST["capacity"];
 $comments = $_POST["comments"];
 $tables_id = json_decode($_POST["tables_id"]);
-
-if (!existPhoneNumber($phone)) {
-    http_response_code(400);
-    echo json_encode(["status" => false, 'description' => 'Телефон не найден, проверьте введенный номер.']);
-    exit;
-}
+$user_id = $_SESSION["id_user"] ?? null;
+$status = TableStatusEnum::PENDING;
 
 $link->begin_transaction();
 
 try {
     $stmt1 = $link->prepare("
-        INSERT INTO reservations (phone, name, date, time, capacity, comments) VALUES (?,?,?,?,?,?)
+        INSERT INTO reservations (phone, name, date, time_start, time_end, capacity, comments, status, user_id) VALUES (?,?,?,?,?,?,?,?,?)
     ");
-    $stmt1->bind_param('ssssss', $phone, $name, $date, $time, $capacity, $comments);
+    $stmt1->bind_param('sssssssss', $phone, $name, $date, $time_start, $time_end, $capacity, $comments, $status, $user_id);
     if (!$stmt1->execute()) {
         throw new Exception('Упс! возникла непредвиденная ошибка, свяжитесь с администратором!');
     }
@@ -41,12 +40,6 @@ try {
         if (!$query->execute()) {
             throw new Exception("Error executing query 1: " . $query->error);
         }
-
-        $stmt2 = $link->prepare("UPDATE tables SET status = 1 WHERE id = ?");
-        $stmt2->bind_param('s', $table_id);
-        if (!$stmt2->execute()) {
-            throw new Exception('Упс! возникла непредвиденная ошибка, свяжитесь с администратором!');
-        }
     }
 
     $link->commit();
@@ -58,18 +51,4 @@ try {
     $link->rollback();
     http_response_code(400);
     echo json_encode(["status" => false, 'description' => $e->getMessage()]);
-}
-
-function existPhoneNumber($phone): bool
-{
-    global $link;
-
-    $query = $link->prepare("SELECT COUNT(phone) as count FROM user WHERE phone = ? LIMIT 1");
-    $query->bind_param("i", $phone);
-    $query->execute();
-
-    if ($query->get_result()->fetch_row()[0] > 0) {
-        return true;
-    }
-    return false;
 }

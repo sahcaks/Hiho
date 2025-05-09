@@ -5,14 +5,14 @@
             <li class="nav-item">
                 <a class="nav-link <?= isActiveLink(ADMIN_URL) ?>" aria-current="page" href="<?= ADMIN_URL ?>">
                     <span data-feather="home" class="align-text-bottom"></span>
-                    <i class="fa fa-dashboard"></i> Dashboard
+                    <i class="fa fa-dashboard"></i> Панель управления
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link <?= isActiveLink("/table_arrangement/list.php") ?>"
                    href="<?= ADMIN_URL ?>/table_arrangement/list.php">
                     <span data-feather="table-arrangement" class="align-text-bottom"></span>
-                    <i class="fa fa-th-large"></i> Table arrangement
+                    <i class="fa fa-th-large"></i> Бронь
                 </a>
             </li>
         </ul>

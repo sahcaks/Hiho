@@ -28,10 +28,10 @@ include 'header.php'
 <main>
     <div class="container-fluid">
         <div class="d-flex justify-content-around flex-xxl-row flex-column">
-            <form method="post" class="col-12 col-xxl-6 row g-3 p-4 needs-validation" novalidate>
+            <form method="post" id="reservationForm" class="col-12 col-xxl-6 row g-3 p-4 needs-validation" novalidate>
                 <div class="col-md-6">
                     <label for="phone" class="form-label">Телефон</label>
-                    <input type="text" class="form-control" id="phone" name="phone" value="1234567891"
+                    <input type="text" class="form-control" id="phone" name="phone" value=""
                            pattern="^\+?[1-9]\d{9,14}$"
                            minlength="10"
                            maxlength="15" required>
@@ -39,22 +39,27 @@ include 'header.php'
                 </div>
                 <div class="col-md-6">
                     <label for="name" class="form-label">Имя</label>
-                    <input type="text" class="form-control" id="name" name="name" value="Test" minlength="2" required>
+                    <input type="text" class="form-control" id="name" name="name" value="" minlength="2" required>
                     <div class="invalid-feedback">Введите имя длиной не менее 2 символов.</div>
                 </div>
                 <div class="col-md-6">
+                    <label for="time-start" class="form-label">Время начала</label>
+                    <select class="form-control" id="time-start" name="time_start" required></select>
+                    <div class="invalid-feedback">Выберите правильное время начала!</div>
+                </div>
+                <div class="col-md-6">
+                    <label for="time-end" class="form-label">Время окончания</label>
+                    <select class="form-control" id="time-end" name="time_end" required></select>
+                    <div class="invalid-feedback">Выберите правильное время окончания!</div>
+                </div>
+                <div class="col-md-6">
                     <label for="date" class="form-label">Дата</label>
-                    <input type="date" class="form-control" id="date" name="date" value="2025-04-10" required>
+                    <input type="date" class="form-control" id="date" name="date" value="" required>
                     <div class="invalid-feedback">Выберите дату.</div>
                 </div>
                 <div class="col-md-6">
-                    <label for="time" class="form-label">Время</label>
-                    <input type="time" class="form-control" id="time" name="time" value="10:00" required>
-                    <div class="invalid-feedback">Выберите время.</div>
-                </div>
-                <div class="col-12">
                     <label for="capacity" class="form-label">Количество человек</label>
-                    <input type="number" class="form-control" id="capacity" name="capacity" value="3" min="1"
+                    <input type="number" class="form-control" id="capacity" name="capacity" value="" min="1"
                            max="36" required>
                     <div class="invalid-feedback">Укажите количество человек от 1 до 36.</div>
                 </div>

@@ -26,7 +26,7 @@ if (mysqli_num_rows($result) > 0) {
         <?php include(__DIR__ . '/../include/sidebar.php'); ?>
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">Orders</h1>
+                <h1 class="h2">Заказы</h1>
             </div>
             <div class="table-responsive">
                 <table id="table-data" class="table table-striped text-center align-middle" style="width:100%">
@@ -48,10 +48,10 @@ if (mysqli_num_rows($result) > 0) {
                                 <ul class="text-start list-unstyled">
                                     <?php array_map(function ($value) {
                                         echo '<br/>';
-                                        echo '<li> Dish: ' . $value['dish'] . '</li>';
-                                        echo '<li> Weight: ' . $value['weight'] . '</li>';
-                                        echo '<li> Price: ' . $value['price'] . '</li>';
-                                        echo '<li> Recipes: ' . $value['recipes'] . '</li>';
+                                        echo '<li>' . $value['dish'] . ' (' . $value['quantity'] . ') </li>';
+                                        echo '<li>' . $value['weight'] . '</li>';
+                                        echo '<li>' . $value['price'] . '</li>';
+                                        echo '<li>' . $value['recipes'] . '</li>';
                                     }, $item['items']) ?>
                                 </ul>
                             </td>

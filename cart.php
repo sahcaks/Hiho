@@ -35,11 +35,26 @@ include 'header.php';
           rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
     <?php
     include "shared_styles.php";
     ?>
 </head>
-
+<style>
+    #orderForm {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+    #orderForm input {
+        padding: 10px;
+        margin: 10px 0;
+    }
+    #orderForm .btn {
+        display: flex;
+        justify-content: end;
+    }
+</style>
 <body>
 <h2 class="name-cart">Корзина</h2>
 <div class="cart_items">
@@ -63,13 +78,15 @@ include 'header.php';
 <div id="modalOverlay" class="modal-overlay" style="display:none;">
     <div id="orderModal" class="modal">
         <span class="close-modal" onclick="closeModal()">&times;</span>
+        <h2>Оформление заказа</h2>
         <form id="orderForm">
-            <h2>Оформление заказа</h2>
             <label for="name">Имя:</label>
             <input type="text" id="name" name="name" required>
             <label for="phone">Телефон:</label>
             <input type="tel" id="phone" name="phone" required>
-            <button type="submit" class="submit-button">Оформить заказ</button>
+            <div class="btn">
+                <button type="submit" class="submit-button">Оформить заказ</button>
+            </div>
         </form>
     </div>
 </div>
@@ -135,10 +152,6 @@ include 'header.php';
     });
 </script>
 <script type="module">
-    import Toaster from './js/modules/notification/toaster.js'
-
-    const toaster = new Toaster();
-
     document.getElementById('orderForm').addEventListener('submit', function (event) {
         event.preventDefault();
 
@@ -153,24 +166,22 @@ include 'header.php';
                     const errorData = await response.json();
                     throw new Error(errorData.description);
                 }
+                closeModal();
                 return response.json();
             })
             .then(response => {
-                toaster.showNotification({
-                    title: 'Успешно',
-                    message: response.description,
-                    type: 'success',
-                });
+                toastr.success(response.description);
+                setTimeout(() => {
+                    window.location.reload()
+                }, 2500);
             })
             .catch(error => {
-                toaster.showNotification({
-                    title: 'Ошибка',
-                    message: error.message,
-                    type: 'danger',
-                });
+                toastr.error(error.message);
             });
     });
 </script>
 </body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
 </html>

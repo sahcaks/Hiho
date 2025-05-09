@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap"
           rel="stylesheet">
     <link rel="stylesheet" href="css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -42,6 +43,7 @@
             <?php
             if (isset($_SESSION['name'])) {
                 echo "<div class='head_icon cart-icon'>";
+                echo "<a href='admin/'><span style='font-size: 25px' class='fa fa-user'></span></a>";
                 echo "<a href=\"cart.php\"><img src='img\icons\bucket1.svg' alt='bucket' class='bucket basket-icon'></a>";
                 echo "<span class='cart-count' id='cart-count'>" . count($_SESSION['cart']) . "</span>";
                 echo "<a href=\"logout.php\" class=\"exit\" id=\"logout\">Выйти</a>";

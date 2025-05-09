@@ -4,6 +4,7 @@ use app\admin\include\Redirect;
 use app\helper\Enum\RoleEnum;
 
 require_once dirname(__DIR__) . '/../config/config.php';
+require_once dirname(__DIR__, 2) . '/admin/include/functions.php';
 
 global $link;
 try {

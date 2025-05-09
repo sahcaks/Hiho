@@ -6,6 +6,14 @@ const toaster = new Toaster();
 const MAIN_URL = location.protocol + "//" + location.host + "/hiho/";
 const GET_TABLE_URL = MAIN_URL + "admin/table_arrangement/getTable.php";
 const UPDATE_COORDINATES_URL = MAIN_URL + 'admin/table_arrangement/update_coordinates.php'
+const saveGrid = document.getElementById('save-grid');
+// Координаты "запрещенной зоны" (центр сетки)
+const restrictedArea = {
+    xStart: 2, // Начало по оси X
+    xEnd: 9,   // Конец по оси X
+    yStart: 0, // Начало по оси Y
+    yEnd: 6,   // Конец по оси Y
+};
 
 
 GridStack.renderCB = function (el, w) {
@@ -15,8 +23,10 @@ GridStack.renderCB = function (el, w) {
 let serializedData = [];
 let grid = GridStack.init({
     minRow: 4,
+    maxRow: 4,
+    column: 12,
     cellHeight: 125,
-    float: true,
+    float: false,
     draggable: {cancel: '.no-drag'}
 });
 
@@ -54,18 +64,39 @@ async function getTables() {
 }
 
 grid.on('change', function (event, items) {
-    const blocks = items.map((item) => ({
-        id: item.id,
-        x: item.x,
-        y: item.y,
-        width: item.w,
-        height: item.h,
-    }));
+    items.forEach(item => {
+        const isRestricted =
+            item.x < restrictedArea.xEnd &&
+            item.x + item.w > restrictedArea.xStart &&
+            item.y < restrictedArea.yEnd &&
+            item.y + item.h > restrictedArea.yStart;
 
+        if (isRestricted) {
+            const prevX = item._origX || 0;
+            const prevY = item._origY || 0;
+            grid.update(item.el, {x: prevX, y: prevY});
+        } else {
+            item._origX = item.x;
+            item._origY = item.y;
+            saveGrid.classList.remove('d-none');
+        }
+    });
+});
+
+saveGrid.addEventListener('click', function (e) {
+   e.preventDefault();
+
+    serializedData = grid.save();
+    const blocks = grid.getGridItems().map((item) => ({
+        id: item.gridstackNode.id,
+        x: item.gridstackNode.x,
+        y: item.gridstackNode.y,
+        width: item.gridstackNode.w,
+        height: item.gridstackNode.h,
+    }));
     let data = new FormData();
     data.append('blocks', JSON.stringify(blocks));
 
-    // Отправка данных на сервер
     api.post(UPDATE_COORDINATES_URL, data)
         .then(data => toaster.showNotification({
             title: 'Успешно', message: data.description, type: 'success',

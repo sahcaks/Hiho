@@ -11,12 +11,16 @@ if (statuses.length > 0) {
         status.addEventListener('change', function (element) {
             let data = new FormData();
             data.append('status', element.target.value);
-            data.append('table_id', element.target.dataset.tableId);
             data.append('reservation_id', element.target.dataset.reservationId);
             api.post('admin/table_arrangement/update_status.php', data)
-                .then(data => toaster.showNotification({
-                    title: 'Успешно', message: data.description, type: 'success',
-                }))
+                .then(data => {
+                    toaster.showNotification({
+                        title: 'Успешно', message: data.description, type: 'success',
+                    });
+                    setTimeout(function() {
+                        window.location.reload();
+                    }, 2500);
+                })
                 .catch(error => toaster.showNotification({
                     title: 'Ошибка', message: error.description, type: 'danger',
                 }));

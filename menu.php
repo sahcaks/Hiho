@@ -151,7 +151,6 @@ include 'header.php';
             data: {category: category, searchTerm: searchTerm},
             success: function (response) {
                 $('#search-results').html(response);
-
                 // Если в результатах есть блюда, скрываем основное меню
                 if ($('#search-results .onecard').length > 0) {
                     $('#main-menu').hide(); // Скрываем основное меню
@@ -159,7 +158,6 @@ include 'header.php';
                     $('#main-menu').show(); // Показываем основное меню, если ничего не найдено
                 }
                 loadEventToAddCart();
-
             }
         });
     }
@@ -196,25 +194,33 @@ include 'header.php';
 
     function loadEventToAddCart() {
         let carts = document.querySelectorAll('button.add-to-cart');
-        const MAIN_URL = location.protocol + "//" + location.host + "/hiho/";
         if (carts.length > 0) {
             Array.prototype.slice.call(carts).forEach(function (cart) {
-                cart.addEventListener('click', async function (element) {
-                    let data = new FormData();
-                    data.append('id_dish', element.target.dataset.id);
-                    await fetch(MAIN_URL + '/add_to_cart.php', {
-                        method: 'POST',
-                        body: data
-                    }).then((response) => {
-                        if (response.ok) {
-                            let currentCount = parseInt(document.getElementById('cart-count').textContent);
-                            document.getElementById('cart-count').innerHTML = currentCount + 1;
-                        }
-                    })
-                });
+                cart.removeEventListener('click', handleAddToCart);
+                cart.addEventListener('click', handleAddToCart);
             });
         }
     }
+
+    async function handleAddToCart(event) {
+        const MAIN_URL = location.protocol + "//" + location.host + "/hiho/";
+        const element = event.currentTarget;
+        let data = new FormData();
+        data.append('id_dish', element.children[0].dataset.id);
+        await fetch(MAIN_URL + '/add_to_cart.php', {
+            method: 'POST',
+            body: data
+        })
+            .then(async response => {
+                const result = await response.json();
+                if (result.status) {
+                    document.getElementById('cart-count').innerHTML = result.total;
+                }
+            })
+            .catch(error => console.error('Ошибка при добавлении в корзину:', error));
+    }
+
+    loadEventToAddCart();
 </script>
 </body>
 
