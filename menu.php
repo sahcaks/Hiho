@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap"
           rel="stylesheet">
     <link rel="stylesheet" href="css/swiper-bundle.min.css">
-
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -103,6 +103,7 @@ include 'header.php';
 </footer>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <script src="js/modal.js"></script>
 <script src="js/swiper-bundle.min.js"></script>
 <script src="js/index.js"></script>
@@ -214,10 +215,11 @@ include 'header.php';
             .then(async response => {
                 const result = await response.json();
                 if (result.status) {
+                    toastr.success('Блюдо добавлено!');
                     document.getElementById('cart-count').innerHTML = result.total;
                 }
             })
-            .catch(error => console.error('Ошибка при добавлении в корзину:', error));
+            .catch(error => toastr.error('Ошибка при добавлении в корзину:', error));
     }
 
     loadEventToAddCart();

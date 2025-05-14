@@ -11,17 +11,27 @@ date.setAttribute('min', today);
 
 function generateTimeOptions(startHour, endHour) {
     const times = [];
+    const now = new Date();
+    const currentHour = now.getHours();
+    const currentMinute = now.getMinutes();
+
     for (let h = startHour; h < endHour; h++) {
         for (let m = 0; m < 60; m += 30) {
-            const hour = String(h).padStart(2, '0');
-            const minute = String(m).padStart(2, '0');
-            times.push(`${hour}:${minute}`);
+            if (
+                h > currentHour ||
+                (h === currentHour && m >= currentMinute)
+            ) {
+                const hour = String(h).padStart(2, '0');
+                const minute = String(m).padStart(2, '0');
+                times.push(`${hour}:${minute}`);
+            }
         }
     }
+
     return times;
 }
 
-const startTimeOptions = generateTimeOptions(9, 21);
+const startTimeOptions = generateTimeOptions(9, 22);
 const endTimeOptions = generateTimeOptions(9, 23);
 
 startTimeOptions.forEach((time) => {

@@ -23,7 +23,8 @@ require_once __DIR__ . '/config/config.php'
 
 <body>
 <?php
-include 'header.php'
+include 'header.php';
+include 'modal_forms.php';
 ?>
 <main>
     <div class="container-fluid">

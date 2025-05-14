@@ -36,6 +36,7 @@ if (mysqli_num_rows($result) > 0) {
                         <th>Name</th>
                         <th>Phone</th>
                         <th>Order list</th>
+                        <th>Actions</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -54,6 +55,12 @@ if (mysqli_num_rows($result) > 0) {
                                         echo '<li>' . $value['recipes'] . '</li>';
                                     }, $item['items']) ?>
                                 </ul>
+                            </td>
+                            <td>
+                                <a class="btn btn-outline-danger btn-sm" data-bs-toggle="modal"
+                                   data-bs-target="#confirmDeleteModal" data-url="actions/remove.php"
+                                   data-remove-id="<?= $item['id'] ?>"><i
+                                            class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                     <?php } ?>

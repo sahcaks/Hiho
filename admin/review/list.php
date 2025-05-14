@@ -50,9 +50,6 @@ if (mysqli_num_rows($result) > 0) {
                                 <a class="btn btn-outline-success btn-sm"
                                    href="edit.php?id=<?= $item['id'] ?>"><i
                                             class="fa fa-pencil"></i></a>
-                                <a class="btn btn-outline-warning btn-sm"
-                                   href="view.php?id=<?= $item['id'] ?>"><i
-                                            class="fa fa-eye"></i></a>
                                 <a class="btn btn-outline-danger btn-sm" data-bs-toggle="modal"
                                    data-bs-target="#confirmDeleteModal" data-url="actions/remove.php"
                                    data-remove-id="<?= $item['id'] ?>"><i
