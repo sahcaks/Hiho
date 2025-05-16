@@ -42,7 +42,7 @@ class Grid {
             return false;
         }
 
-        let data = new FormData(document.forms[1]);
+        let data = new FormData(submitButton.form);
         let selectedTables = this.getAllSelectedTables();
         if (selectedTables.length === 0) {
             toaster.showNotification({
@@ -174,7 +174,7 @@ grid.loadGrid().then(r => console.log('Tables scheme load!')).then(() => {
     addActionsToTables();
 });
 
-document.forms[1].addEventListener('submit', async function (e) {
+submitButton.form.addEventListener('submit', async function (e) {
     e.preventDefault();
 
     submitButton.disabled = true;
